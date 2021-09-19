@@ -1,5 +1,7 @@
+/* eslint-disable linebreak-style */
 // Book Class: Represents a Book
-class Book { 
+// eslint-disable-next-line max-classes-per-file
+class Book {
   constructor(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -16,18 +18,18 @@ class UI {
         title: 'Book One',
         author: 'Tobi',
         pages: 29,
-        read: 'No'
+        read: 'No',
       },
       {
         title: 'Book Two',
         author: 'Elijah',
         pages: 46,
-        read: 'Yes'
+        read: 'Yes',
       },
-    ]
+    ];
 
     const books = BookStore;
-  
+
     books.forEach((book) => UI.addBookToList(book));
   }
 
@@ -48,7 +50,7 @@ class UI {
   }
 
   static deleteBook(el) {
-    if(el.classList.contains('delete')) {
+    if (el.classList.contains('delete')) {
       el.parentElement.parentElement.remove();
     }
   }
@@ -85,8 +87,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   UI.clearFields();
 });
 
-
 // Event: Remove a Book
 document.querySelector('#book-list').addEventListener('click', (e) => {
-  UI.deleteBook(e.target)
+  UI.deleteBook(e.target);
 });
