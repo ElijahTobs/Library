@@ -35,7 +35,6 @@ class UI {
     const list = document.querySelector('#book-list');
 
     const row = document.createElement('tr');
-    // book.read = document.getElementById('read').check ed;
 
     row.innerHTML = `
       <td>${book.title}</td>
@@ -62,9 +61,6 @@ class UI {
   }
 }
 
-
-// Store Class: Handles Storage
-
 // Event: Display Books
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
 
@@ -87,16 +83,6 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
   // Clear fields
   UI.clearFields();
-
-  // // Add book to store
-  // Store.addBook(book);
-
-  // // Show success message
-  // UI.showAlert('Book Added', 'success');
-
-  // // Clear fields
-  // UI.clearFields();
-
 });
 
 
