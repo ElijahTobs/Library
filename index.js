@@ -11,15 +11,31 @@ class Book {
 // UI Class: Handle UI Tasks
 class UI {
   static displayBooks() {
-    const books = Store.getBooks();
+    const BookStore = [
+      {
+        title: 'Book One',
+        author: 'Tobi',
+        pages: 29,
+        read: 'No'
+      },
+      {
+        title: 'Book Two',
+        author: 'Elijah',
+        pages: 46,
+        read: 'Yes'
+      },
+    ]
 
+    const books = BookStore;
+  
     books.forEach((book) => UI.addBookToList(book));
   }
 
   static addBookToList(book) {
     const list = document.querySelector('#book-list');
+
     const row = document.createElement('tr');
-    book.read = document.getElementById('read').checked;
+    // book.read = document.getElementById('read').check ed;
 
     row.innerHTML = `
       <td>${book.title}</td>
@@ -31,6 +47,13 @@ class UI {
 
     list.appendChild(row);
   }
+
+  static clearFields() {
+    document.querySelector('#title').value = '';
+    document.querySelector('#author').value = '';
+    document.querySelector('#pages').value = '';
+    document.querySelector('#status').value = '';
+  }
 }
 
 
@@ -40,13 +63,38 @@ class UI {
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
 
 // Event: Add a Book
-document.querySelector("#book-form").addEventListener("submit", (e) => {
+document.querySelector('#book-form').addEventListener('submit', (e) => {
+  // Prevent actual submit
+  e.preventDefault();
+
   // Get form values
-  const title = document.querySelector("#title").value;
-  const title = document.querySelector("#author").value;
-  const title = document.querySelector("#pages").value;
-  const title = document.querySelector("#read ").value;
+  const title = document.querySelector('#title').value;
+  const author = document.querySelector('#author').value;
+  const pages = document.querySelector('#pages').value;
+  const read = document.querySelector('#status').value;
+
+  // Instatiate book
+  const book = new Book(title, author, pages, read);
+
+  // Add Book to UI
+  UI.addBookToList(book);
+
+  // Clear fields
+  UI.clearFields();
+
+  // // Add book to store
+  // Store.addBook(book);
+
+  // // Show success message
+  // UI.showAlert('Book Added', 'success');
+
+  // // Clear fields
+  // UI.clearFields();
+
 });
 
 
 // Event: Remove a Book
+document.querySelector('#book-list').addEventListener('click', (e) => {
+  UI.deleteBook(e.target)
+});
