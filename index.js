@@ -40,3 +40,13 @@ class UI {
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
 
 // Event: Add a Book
+document.querySelector("#book-form").addEventListener("submit", (e) => {
+  // Get form values
+  const title = document.querySelector("#title").value;
+  const title = document.querySelector("#author").value;
+  const title = document.querySelector("#pages").value;
+  const title = document.querySelector("#read ").value;
+});
+
+
+// Event: Remove a Book
